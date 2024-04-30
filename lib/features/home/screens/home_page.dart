@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../clients/screens/client_create_page.dart';
 import '../../clients/widgets/client_list.dart';
@@ -8,10 +9,17 @@ import '../../invoice/widgets/invoice_list.dart';
 import '../widgets/menus/menu.dart';
 import '../widgets/menus/side_menu.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final Menu currentMenu = Menu.Invoices;
 
-  const HomePage({super.key});
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +37,26 @@ class HomePage extends StatelessWidget {
       drawer: Drawer(
         child: SideMenu(),
       ),
-      body: showWidgetFromCurrentMenu(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          decideAction(context);
-        },
-        child: Icon(Icons.add),
+      body: IndexedStack(
+        index: selectedIndex,
+        children: [
+          Container(),
+          InvoiceList(),
+          ClientList(),
+        ],
       ),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: selectedIndex,
+        onDestinationSelected: (value) => setState(() => selectedIndex = value),
+        destinations: [
+          NavigationDestination(icon: Icon(Iconsax.home_1), label: "Accueil"),
+          NavigationDestination(icon: Icon(Iconsax.bill), label: "Factures"),
+          NavigationDestination(icon: Icon(Iconsax.people), label: "Clients"),
+          NavigationDestination(icon: Icon(Iconsax.money), label: "Tresorerie"),
+          NavigationDestination(icon: Icon(Iconsax.user), label: "Moi"),
+        ],
+      ),
+
     );
   }
 

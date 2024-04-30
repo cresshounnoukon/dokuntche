@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:invoice_app/features/company/screens/company_page.dart';
 import 'package:invoice_app/features/home/controler/home_controller.dart';
-import 'package:invoice_app/features/home/screens/home_page.dart';
-import 'package:invoice_app/features/invoice/widgets/modals/full_menu.dart';
 import 'package:provider/provider.dart';
+
+import 'features/onboarding/screens/onboarding_page.dart';
+
+
 
 void main() {
   runApp(MultiProvider(
@@ -24,14 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme(),
-
-
-
+      theme: ThemeData(
+        textTheme: GoogleFonts.montserratTextTheme(),
       ),
       themeMode: ThemeMode.light,
-      home: CompanyPage(),
-
+      home: OnboardingPage(),
     );
   }
 }

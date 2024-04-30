@@ -10,6 +10,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   image_picker: ^1.0.7
+  iconsax:
 
   provider:
   dio:
@@ -26,7 +27,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/images/
   
 
 

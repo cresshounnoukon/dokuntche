@@ -4,12 +4,14 @@ class KInput extends StatelessWidget {
   final String? name;
   final TextInputType? keyboardType;
   final bool showclearButton;
+  final Widget? prefixIcon;
   final dynamic initialValue;
 
   KInput(
       {super.key,
       required this.name,
       this.keyboardType,
+      this.prefixIcon,
       this.showclearButton = false,
       this.initialValue});
 
@@ -21,15 +23,16 @@ class KInput extends StatelessWidget {
 
       keyboardType: keyboardType,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.zero,
+        prefixIcon: prefixIcon,
+      //  contentPadding: EdgeInsets.zero,
           label: Text("$name"),
-          border: UnderlineInputBorder(
-            borderSide: BorderSide(
-              width: 1,
-              color: Colors.red,
-            ),
+       //   filled: true,
+          
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+
           ),
-          suffix: showclearButton ? Icon(Icons.close) : null),
+          suffixIcon: showclearButton ? Icon(Icons.close) : null),
     );
   }
 }
